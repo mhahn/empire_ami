@@ -5,7 +5,8 @@ set -e
 
 apt-get update
 apt-get install -y python-setuptools software-properties-common
-apt-add-repository -y 
+apt-add-repository -y ppa:ansible/ansible
+apt-get update
 apt-get install -y ansible python-setuptools patch
 
 # Upgrade base packages
