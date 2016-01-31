@@ -8,6 +8,10 @@ apt-get install -y python-setuptools software-properties-common
 apt-add-repository -y 
 apt-get install -y ansible python-setuptools patch
 
+# Upgrade base packages
+apt-get -y upgrade
+apt-get -y dist-upgrade
+
 easy_install -U pip
 
 pip install boto
