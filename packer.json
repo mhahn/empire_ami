@@ -2,7 +2,8 @@
   "variables": {
     "changes": "{{ env `CHANGES` }}",
     "gitinfo": "{{ env `GITINFO` }}",
-    "branch": "{{ env `BRANCH` }}"
+    "branch": "{{ env `BRANCH` }}",
+    "base_ami": "{{ env `BASE_AMI` }}"
   },
   "builders": [
     {
@@ -11,7 +12,7 @@
       "access_key": "",
       "secret_key": "",
       "region": "us-east-1",
-      "source_ami": "ami-c135f3aa",
+      "source_ami": "{{user `base_ami`}}",
       "instance_type": "m3.medium",
       "ssh_username": "ubuntu",
       "ssh_timeout": "5m",

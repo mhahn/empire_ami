@@ -1,4 +1,5 @@
 SHELL=/bin/bash
+BASE_AMI=ami-fce3c696 # us-east-1 14.04 ebs-ssd 20160114.5 hvm
 
 ifeq ($(CIRCLE_BRANCH),master)
 	# builds in us-east-1, us-west-1, us-west-2 and exposes to the world
@@ -37,5 +38,5 @@ download-packer:
 	if [ ! -f $(HOME)/bin/packer ]; then curl --location -O https://dl.bintray.com/mitchellh/packer/packer_0.8.2_linux_amd64.zip && unzip -d $(HOME)/bin packer_0.8.2_linux_amd64.zip; fi
 
 build:
-	set -o pipefail; CHANGES="$(CHANGES)" BRANCH="$(BRANCH)" GITINFO="$(BRANCH)@$(shell git log -1 --pretty=%H)" $(PACKERCMD)
+	set -o pipefail; BASE_AMI="$(BASE_AMI)" CHANGES="$(CHANGES)" BRANCH="$(BRANCH)" GITINFO="$(BRANCH)@$(shell git log -1 --pretty=%H)" $(PACKERCMD)
 	./files/get_packer_amis $(CIRCLE_ARTIFACTS)/packer.out > $(CIRCLE_ARTIFACTS)/amis.yml
