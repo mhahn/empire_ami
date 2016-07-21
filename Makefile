@@ -39,3 +39,6 @@ download-packer:
 build:
 	set -o pipefail; CHANGES="$(CHANGES)" BRANCH="$(BRANCH)" GITINFO="$(BRANCH)@$(shell git log -1 --pretty=%H)" $(PACKERCMD)
 	./files/get_packer_amis $(CIRCLE_ARTIFACTS)/packer.out > $(CIRCLE_ARTIFACTS)/amis.yml
+
+release: build
+	./bin/release

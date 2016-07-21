@@ -12,3 +12,9 @@ test:
   override:
     - cd ~/empire_ami; MACHINE=true make build:
         timeout: 1200
+
+deployment:
+  release:
+    branch: master
+    commands:
+      - make release
