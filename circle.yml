@@ -6,6 +6,7 @@ dependencies:
   cache_directories:
     - /home/ubuntu/bin
   pre:
+    - go get github.com/aktau/github-release
     - cd ~/empire_ami; make download-packer
 
 test:
